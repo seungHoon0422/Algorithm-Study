@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
-public class Main {
+public class Main_백준_1874_스택수열_실버3 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
