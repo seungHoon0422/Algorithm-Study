@@ -18,10 +18,10 @@ public class Main_백준_1543_문서검색_실버4_김동률_136ms {
 				// str1의 좌표와 str2의 좌표가 일치한다면
 				if(str2[r-1]==str1[c-1]) {
 					LCS[r][c] = LCS[r-1][c-1] + 1;
-					// str2 문자열의 길이와 LCS값이 일치한다면 중복 확인
+					// str2 문자열의 길이와 연속된 문자열의 길이가 일치한다면 중복 확인
 					if(LCS[r][c]==row) {
-						// 해당 좌표 좌측 row의 크기만큼 탐색하며, 같은 row값이 발견되면 증가 안함
-						// 발견되면 0으로 초기화
+						// 해당 좌표 좌측을 row의 크기만큼 탐색하며, 같은 row값(문자열길이)이 발견되면
+						// flag을 true로 변경하고, 해당 좌표를 0으로 초기화(다음 중복 방지)
 						boolean flag = false;
 						for(int i=1; i<row; i++) {
 							if(LCS[r][c-i]==row) {
