@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /** Main_백준_14891_톱니바퀴_실버1_128ms*/
-public class Main_백준_14891_톱니바퀴_실버1_128ms {
+public class Main_백준_14891_톱니바퀴_실버1_김동률_128ms {
 	
 	static String[] chains;
 	static boolean[] rotated;
