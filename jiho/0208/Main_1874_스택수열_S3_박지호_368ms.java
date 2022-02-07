@@ -30,7 +30,7 @@ public class Main_1874_스택수열_S3_박지호_368ms {
 			sb.append("-").append("\n");
 		}
 		
-		System.out.println(sb.toString());  
+		System.out.println(sb.toString());
 
 	}
 }
