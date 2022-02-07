@@ -3,7 +3,7 @@ package practice;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-public class Solution_BOJ_1543_문서검색_S4_박지호_140ms {
+public class Main_1543_문서검색_S4_박지호_140ms {
 	public static void main(String[] args) throws Exception {
 		// 우선은 1번으로
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
