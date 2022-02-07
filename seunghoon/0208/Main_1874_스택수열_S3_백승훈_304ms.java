@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class BOJ_1874_스택수열_S3_백승훈_304ms{
+public class Main_1874_스택수열_S3_백승훈_304ms{
 	
 	
 	static int[] numList;
