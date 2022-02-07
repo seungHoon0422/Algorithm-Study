@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BOJ_1543_문서검색_S4_백승훈_84ms {
+public class Main_1543_문서검색_S4_백승훈_84ms {
 
 	static StringBuilder sb = new StringBuilder();
 	public static void main(String[] args) throws IOException {
