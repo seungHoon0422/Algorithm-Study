@@ -6,8 +6,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 
-public class Main_BOJ_14891_톱니바퀴_틀림 {
-
+public class Main_BOJ_14891_톱니바퀴_124ms {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -58,7 +57,7 @@ public class Main_BOJ_14891_톱니바퀴_틀림 {
                         }
                     } else { // 왼쪽 방향이면
                         // 좌측 끝 톱니바퀴가 아니면
-                        if (cur.no != 4 || nxt != 1) {
+                        if (cur.no != 4) {
                             if (gears[cur.no][(idx[cur.no] + 4) % 8] == gears[nxt][idx[nxt]]) continue;
                         } else {
                             if (gears[cur.no][idx[cur.no]] == gears[nxt][idx[nxt]]) continue;
