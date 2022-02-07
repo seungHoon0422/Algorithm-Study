@@ -29,7 +29,7 @@ public class Solution_BOJ_1543_문서검색_S4_박지호_140ms {
 
 		System.out.println(cnt);
 
-	}
+	}  
 }
 
 //전체입력을 A에 저장
