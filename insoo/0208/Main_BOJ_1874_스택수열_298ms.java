@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-class Main {
+class Main_BOJ_1874_스택수열_298ms {
     static int[] stack;
     static int pos = 0;
     public static void main(String[] args) throws Exception {
