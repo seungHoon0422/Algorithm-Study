@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
  * 
  * stack의 push pop은 O(1) 이므로 O(M) 으로 수행 가능
  */
-public class Main_백준_1406_에디터_실버3 {
+public class Main_백준_1406_에디터_실버3_804ms {
 	public static void main(String[] args) throws Exception {
 
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
