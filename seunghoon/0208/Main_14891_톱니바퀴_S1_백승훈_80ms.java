@@ -59,5 +59,6 @@ public class Main_14891_톱니바퀴_S1_백승훈_80ms {
 		}
 		gears[gear] = curr;
 	}
+	// 하이
 	
 }// end of class
