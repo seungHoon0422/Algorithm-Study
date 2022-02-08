@@ -6,6 +6,34 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+// 원래는 이 방법을 사용하려 했음
+class PrinterQ implements Comparable<PrinterQ>{
+	int idx;
+	int rank;
+	public PrinterQ(int idx, int rank) {
+		super();
+		this.idx = idx;
+		this.rank = rank;
+	}
+	public int getIdx() {
+		return idx;
+	}
+	public int getRank() {
+		return rank;
+	}
+	// 역순정렬
+	@Override
+	public int compareTo(PrinterQ o) {
+		// TODO Auto-generated method stub
+		if(this.rank > o.rank) {
+			return -1;
+		}
+		else if(this.rank < o.rank) {
+			return 1;
+		}
+		return 0;
+	}
+}
 
 /** 1966 프린터큐*/
 public class Main_백준_1966_프린터큐_실버3_148ms {
