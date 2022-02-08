@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main_백준_1966_프린터큐_실버3 {
+public class Main_백준_1966_프린터큐_실버3_136ms {
 
 	public static void main(String[] args) throws IOException {
 
