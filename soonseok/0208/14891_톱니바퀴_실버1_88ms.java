@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Main_백준_14891_톱니바퀴_실버1 {
+public class Main_백준_14891_톱니바퀴_실버1_88ms {
 	public static void main(String[] args) throws IOException {
 
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
