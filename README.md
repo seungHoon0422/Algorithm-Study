@@ -10,6 +10,8 @@
 <br/>
 
 ## 이번 주 일정
+[![pepecry](https://user-images.githubusercontent.com/51370905/153421379-8ffe82cc-e832-4d30-9291-c6d344ea4719.png)](https://docs.google.com/spreadsheets/d/1-_0KSAWS-p2Fy9-iW8-UHT5qgZaCF4Ne3k3Odz5AYeQ/edit?usp=sharing)
+
 
 | **날짜**  | **주제**  | **백준번호**  |  **담당**    |
 |:--- |:--- |:--- |:---|
