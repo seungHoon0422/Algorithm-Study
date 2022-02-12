@@ -49,17 +49,19 @@ public class Main_17135_캐슬디펜스_Gold4_백승훈 {
 	
 	//bfs에 활용하기 위해 4방탐색 좌표
 	// 왼쪽을 우선적으로 탐색하기 위해서 좌 상 우 순서로 배치
-	static int dr[] = {0, -1, 0}; // 좌 상 우 
-	static int dc[] = {-1, 0, 1}; // 좌 상 우
-	static int[][] board; // 격자판
-	static int[][] originalBoard;
-	static int[] archor;
-	static List<int[]> archorPosition;
+	private static int dr[] = {0, -1, 0}; // 좌 상 우 
+	private static int dc[] = {-1, 0, 1}; // 좌 상 우
+	private static int[][] board; // 격자판
+	private static int[][] originalBoard;
+	private static int[] archor;
+	private static List<int[]> archorPosition;
 	private static int archorKill;
 	private static int moveCount;
 	private static int enemyDead;
 	private static int enemy;
 	private static int enemycount;
+	
+	
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
@@ -70,11 +72,11 @@ public class Main_17135_캐슬디펜스_Gold4_백승훈 {
 		
 		board = new int[N+2][M+2];			// N+1행에는 궁수배치, 벽테두리 설정
 		originalBoard = new int[N+2][M+2];			// N+1행에는 궁수배치, 벽테두리 설정
-		archor = new int[M+2];
+		archor = new int[M];
 		archorPosition = new LinkedList<>();
 		
-		
-		for(int i=1; i<=N; i++) { 				// 보드판 입력
+		// 보드판 입력
+		for(int i=1; i<=N; i++) { 				
 			st = new StringTokenizer(br.readLine(), " ");
 			for(int j=1; j<=M; j++) {
 				originalBoard[i][j] = Integer.parseInt(st.nextToken());
@@ -86,54 +88,35 @@ public class Main_17135_캐슬디펜스_Gold4_백승훈 {
 		for(int i=0; i<=N+1; i++) originalBoard[i][0] = originalBoard[i][M+1] = -1;
 		for(int j=0; j<=M+1; j++) originalBoard[0][j] = -1;
 		
-		
-		
-		System.out.println("Enemy : "+enemy);
+
 		// 궁수 배치
 		combination(0, 1, new int[3]);
 		int result = 0;
-		for (int[] position : archorPosition) {
-			System.out.println("Archors : "+Arrays.toString(position));
+		
+		for (int[] position : archorPosition) { // 시뮬레이션 시작
 			archor = position; 					// 궁수 위치 배치		
 			archorKill = 0;						// 궁수가 죽인 적의 수 초기화
 			moveCount = 0;
 			enemyDead = 0;
-			board = originalBoard;
-			
-			
-			
-			for(int block=0; block<=M+1; block++) // 성벽도 -1로 초기화
-				board[N+1][block] = -1;
-			board[N+1][position[0]] = board[N+1][position[1]] = board[N+1][position[2]] = 2;
-			// 궁수가 있는 위치 이외의 장소는 -1처리 -> bfs효율 증가
-			
 
-			System.out.println("[BOARD]");
-			for(int i=0;i<=N+1; i++)	System.out.println(Arrays.toString(board[i]));
-			System.out.println();
-			
-			// bfs를 한명씩 차례대로 도는데 거리안에 가장 가까운 적을 찾으면 바로 큐에있는 좌표를 반환
-			int turn = 1;
-			while(archorKill + enemyDead < enemy && turn <= N-2) {
-				System.out.println("turn "+turn++);
+			for(int i=0; i<=N+1; i++)			// copy board
+				for(int j=0; j<=M+1; j++)
+					board[i][j] = originalBoard[i][j];
+		
+												// 성벽도 -1로 초기화, 궁수가 있는 위치 이외의 장소는 -1처리 -> bfs효율 증가
+			for(int block=0; block<=M+1; block++) 
+				board[N+1][block] = -1;
+			board[N+1][position[0]] = board[N+1][position[1]] = board[N+1][position[2]] = 2;			
+
+			while(archorKill + enemyDead < enemy) {
 				BFS(archor[0]);
 				BFS(archor[1]);
 				BFS(archor[2]);
 				moveEnemy();
-				for(int i=0;i<=N+1; i++)	System.out.println(Arrays.toString(board[i]));
-				System.out.println("archorKill : " + archorKill);
-				System.out.println("enemyDead : " + enemyDead);
-				System.out.println();
 			}
 			result = Math.max(result, archorKill);
-			
-			// 적 아래로 1칸 이동
-			
-			
-//			break;
-		
 		}		
-		System.out.println("result : "+result);
+		System.out.println(result);
 		
 		
 	} // end of main
@@ -213,5 +196,18 @@ q:		while(!queue.isEmpty()) {
 	} // end of combination
 	
 } // end of class
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
