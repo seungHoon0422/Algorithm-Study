@@ -17,6 +17,7 @@ public class Main_백준_11725_트리의부모찾기_실버2_580ms {
 	 * Node2 -> 연결된 노드들
 	 * ......
 	 * 위 같은 구조를 이루게 된다.
+	 * --> 각 배열 값에 ArrayList를 하나씩 갖는 구조
 	 */
 	private static ArrayList<Integer>[] list;
 
@@ -43,10 +44,13 @@ public class Main_백준_11725_트리의부모찾기_실버2_580ms {
 		N = Integer.parseInt(br.readLine());
 		// 노드의 관계 정보 초기화
 		list = new ArrayList[N+1];
+		// 정답 배열 초기화 
 		arr = new int[N+1];
+		// 각 배열에 존재하는 ArrayList들 초기화( 꼭 필요한 작업 )
 		for(int i=1; i<=N; i++) {
 			list[i] = new ArrayList<Integer>();
 		}
+		// 누가 자식인지 부모인지 모르니 양방향 연결
 		for(int i=0; i<N-1; i++) {
 			st = new StringTokenizer(br.readLine());
 			int node1 = Integer.parseInt(st.nextToken());
@@ -54,8 +58,9 @@ public class Main_백준_11725_트리의부모찾기_실버2_580ms {
 			list[node1].add(node2);
 			list[node2].add(node1);
 		}
-		// 배열을 선언하면 자동적으로 0으로 초기화되니, 아래 조건에서 오류가 발생할 수 있다.
+		// 배열을 선언하면 모든 값이 0으로 초기화되니, 아래 조건에서 오류가 발생할 수 있다. if(arr[child]==0)
 		arr[1] = -1;
+		// 루트노드(1번)부터 깊이우선탐색을 한다.
 		findParent(1);
 		
 		// 정답 출력
@@ -68,12 +73,15 @@ public class Main_백준_11725_트리의부모찾기_실버2_580ms {
 
 	// 부모를 찾는 메서드 -> 깊이우선으로 루트 노드인 1부터 탐색한다.
 	private static void findParent(int start) {
+		// ex) Node1에 연결된 노드들 모두 탐색
 		for(int i=0; i<list[start].size(); i++) {
+			// ex) Node1에 연결된 노드 자식 노드를 탐색
 			int child = list[start].get(i);
 			// 아직 초기화되지 않았다면 -> 방문하지 않았다 --> visited 여부 확인이 자동으로 된다.
 			if(arr[child]==0) {
-				// 자식의 부모는 start로 초기화
+				// 자식의 부모는 start로 갱신
 				arr[child] = start;
+				// 자식 기준 탐색
 				findParent(child);
 			}
 		}
