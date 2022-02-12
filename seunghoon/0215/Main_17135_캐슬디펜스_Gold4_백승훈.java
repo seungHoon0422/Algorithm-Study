@@ -13,6 +13,8 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+
 public class Main_17135_캐슬디펜스_Gold4_백승훈 {
 
 	
@@ -28,6 +30,9 @@ public class Main_17135_캐슬디펜스_Gold4_백승훈 {
 	 * 궁수가 공격하는 적은 거리가 D이하인 적 중 가까운 적 -> 여러명이면 가장 왼쪽에 있는 적을 공격
 	 * 같은 적이 여러 궁수에게 공격당할 수 있다, 공격받은 적은 게임에서 제외된다.
 	 * 적은 아래로 한칸 이동하며, 성이 있는 칸으로 이동하면 게임에서 제외
+	 * 
+	 * original Board에 입력을 받고 board에 복사를 해서 사용하는 형식으로 진행
+	 * 궁수 위치를 올겨가며 시뮬레이션 해야됨
 	 * 
 	 * 
 	 * 아이디어 	
@@ -54,7 +59,7 @@ public class Main_17135_캐슬디펜스_Gold4_백승훈 {
 	private static int moveCount;
 	private static int enemyDead;
 	private static int enemy;
-	
+	private static int enemycount;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	
@@ -69,59 +74,66 @@ public class Main_17135_캐슬디펜스_Gold4_백승훈 {
 		archorPosition = new LinkedList<>();
 		
 		
-		for(int i=1; i<=N; i++) { 			// 보드판 입력
+		for(int i=1; i<=N; i++) { 				// 보드판 입력
 			st = new StringTokenizer(br.readLine(), " ");
 			for(int j=1; j<=M; j++) {
-				board[i][j] = Integer.parseInt(st.nextToken());
-				if(board[i][j] == 1) enemy++;
+				originalBoard[i][j] = Integer.parseInt(st.nextToken());
+				if(originalBoard[i][j] == 1) enemy++;
 			}
 		}
 		
 		// 벽 설치
-		for(int i=0; i<=N+1; i++) board[i][0] = board[i][M+1] = -1;
-		for(int j=0; j<=M+1; j++) board[0][j] = -1;
+		for(int i=0; i<=N+1; i++) originalBoard[i][0] = originalBoard[i][M+1] = -1;
+		for(int j=0; j<=M+1; j++) originalBoard[0][j] = -1;
 		
 		
 		
+		System.out.println("Enemy : "+enemy);
 		// 궁수 배치
 		combination(0, 1, new int[3]);
+		int result = 0;
 		for (int[] position : archorPosition) {
+			System.out.println("Archors : "+Arrays.toString(position));
 			archor = position; 					// 궁수 위치 배치		
 			archorKill = 0;						// 궁수가 죽인 적의 수 초기화
 			moveCount = 0;
 			enemyDead = 0;
+			board = originalBoard;
+			
+			
 			
 			for(int block=0; block<=M+1; block++) // 성벽도 -1로 초기화
 				board[N+1][block] = -1;
 			board[N+1][position[0]] = board[N+1][position[1]] = board[N+1][position[2]] = 2;
 			// 궁수가 있는 위치 이외의 장소는 -1처리 -> bfs효율 증가
 			
+
+			System.out.println("[BOARD]");
+			for(int i=0;i<=N+1; i++)	System.out.println(Arrays.toString(board[i]));
+			System.out.println();
+			
 			// bfs를 한명씩 차례대로 도는데 거리안에 가장 가까운 적을 찾으면 바로 큐에있는 좌표를 반환
-			System.out.println("Enemy : "+enemy);
 			int turn = 1;
-			while(archorKill + enemyDead < enemy) {
+			while(archorKill + enemyDead < enemy && turn <= N-2) {
 				System.out.println("turn "+turn++);
 				BFS(archor[0]);
 				BFS(archor[1]);
 				BFS(archor[2]);
 				moveEnemy();
-				
-				System.out.println("PRINT");
 				for(int i=0;i<=N+1; i++)	System.out.println(Arrays.toString(board[i]));
 				System.out.println("archorKill : " + archorKill);
 				System.out.println("enemyDead : " + enemyDead);
+				System.out.println();
 			}
-			
+			result = Math.max(result, archorKill);
 			
 			// 적 아래로 1칸 이동
 			
 			
-			break;
+//			break;
 		
-		}
-		
-		
-		
+		}		
+		System.out.println("result : "+result);
 		
 		
 	} // end of main
@@ -130,8 +142,8 @@ public class Main_17135_캐슬디펜스_Gold4_백승훈 {
 	private static void moveEnemy() {
 		// TODO 적 아래로 한칸 이동
 		// 성벽 바로 위에서부터 탐색
-		System.out.println("move enemy");
-		for(int i=N; i>=moveCount; i--) { 		// 체크하지 않아도 되는 부분 제외
+//		System.out.println("move enemy");
+		for(int i=N; i>=0; i--) { 		// 체크하지 않아도 되는 부분 제외
 			for(int j=1; j<=M; j++) {
 				if(board[i][j] == 1 && i==N) {
 					board[i][j] = 0;
@@ -149,9 +161,9 @@ public class Main_17135_캐슬디펜스_Gold4_백승훈 {
 	private static void BFS(int ac) {
 		// TODO 궁수의 위치 입력, 거리안에 있는 적을 죽이는 함수
 		// 큐안에서 적을 찾을때 까지
-		if(archorKill + enemyDead >= enemy) return;
 		
-		System.out.println("BFS start : "+ac);
+		if(archorKill + enemyDead >= enemy) return;
+//		System.out.println("archor : " +ac);
 		Queue<int[]> queue = new LinkedList<>();
 		boolean[][] visited = new boolean[N+2][M+2]; 
 		queue.offer(new int[] {N+1, ac});
@@ -164,14 +176,14 @@ q:		while(!queue.isEmpty()) {
 			for(int i=0; i<3; i++) {
 				int nr = r+dr[i];
 				int nc = c+dc[i];
-				if(getDistance(r,c,nr,nc) >D) continue;	// 거리가 D를 넘어가면 통과
-				if(!visited[nr][nc] && board[nr][nc] != -1) {
-					queue.offer(new int[] {nr,nc});
+				if(!visited[nr][nc] && board[nr][nc] != -1 && getDistance(N+1,ac,nr,nc) <= D) {
 					if(board[nr][nc] == 1) { 			// 적을 찾은 경우
 						board[nr][nc] = 0;				// 적을 죽이고
 						archorKill++;					// 죽인 적 증가
 						return;
 					}
+					visited[nr][nc] = true;
+					queue.offer(new int[] {nr,nc});
 				}
 			}
 			
@@ -201,18 +213,5 @@ q:		while(!queue.isEmpty()) {
 	} // end of combination
 	
 } // end of class
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
