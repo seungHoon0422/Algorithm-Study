@@ -11,7 +11,7 @@ public class Main_BOJ_5430_AC_G5_박지호_768ms {
 
 	public static void main(String[] args) throws Exception {
 
-		int TC = Integer.parseInt(br.readLine());
+		int TC = Integer.parseInt(br.readLine()); 
 		ArrayDeque<Integer> deque;
 
 		for (int testCase = 1; testCase <= TC; testCase++) {
