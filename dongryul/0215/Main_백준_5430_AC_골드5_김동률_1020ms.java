@@ -55,12 +55,15 @@ public class Main_백준_5430_AC_골드5_1020ms {
 				}
 			}
 			
+			// 에러가 발생했더라면 error를 StringBuilder에 저장
 			if(error) {
 				sb.append(ERR).append("\n");
 			}
+			// 에러가 발생한적이 없다면
 			else {
 				// 앞에서부터 뺄 때
 				sb.append("[");
+				// AC 배열에 값이 남아있는 경우
 				if(dq.size()>0) {
 					if(FB==1) {
 						while(!dq.isEmpty()) {
@@ -76,10 +79,9 @@ public class Main_백준_5430_AC_골드5_1020ms {
 				}
 				sb.append("]").append("\n");
 			}
-			
+			// 정답 StringBuilder에 쌓기
 			result.append(sb.toString());
 		} // end of for testcase
-		
 		
 		// 정답 출력
 		System.out.println(result.toString());
