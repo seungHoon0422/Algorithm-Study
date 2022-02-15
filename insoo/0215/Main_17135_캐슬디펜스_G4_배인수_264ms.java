@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 
-public class Main_17135_캐슬디펜스_G4_배인수_268ms {
+public class Main_17135_캐슬디펜스_G4_배인수_264ms {
 
     static int N, M, D, max;
     static int[][] mat;
@@ -31,11 +31,11 @@ public class Main_17135_캐슬디펜스_G4_배인수_268ms {
         } // end of for
         max = 0;
         // 궁수 조합
-        archerCombination(0, 0, new boolean[M]);
+        archerCombination(0, 0, 0);
         System.out.println(max);
     } // end of main
 
-    static void archerCombination(int i, int archerCnt, boolean[] castle) { // i = 인덱스, archerCnt = 궁수 인원, castle = 성
+    static void archerCombination(int start, int archerCnt, int flag) { // i = 인덱스, archerCnt = 궁수 인원, castle = 성
         // 기저 조건
         if (archerCnt == 3) { // 궁수 최대 3마리 5C3 = 10개
 
@@ -49,9 +49,9 @@ public class Main_17135_캐슬디펜스_G4_배인수_268ms {
             int cnt = 0;
             int y = N;
             while (y-- > 0) {
-                for (int j = 0; j < castle.length; j++) {
+                for (int j = 0; j < M; j++) {
                     // 궁수가 있으면
-                    if (castle[j]) {
+                    if ((flag & 1 << j) != 0) {
                         // 바로 앞에 적이 있으면 처리
                         if (mat1[N - 1][j] == 1) {
                             kill.offer(new Pair(j, N - 1));
@@ -72,12 +72,11 @@ public class Main_17135_캐슬디펜스_G4_배인수_268ms {
             return;
         }
 
-        if (i == M) return;
         // 유도 조건
-        castle[i] = true;
-        archerCombination(i + 1, archerCnt + 1, castle);
-        castle[i] = false;
-        archerCombination(i + 1, archerCnt, castle);
+        for (int i = start; i < M; i++) {
+            archerCombination(i + 1, archerCnt + 1, flag | 1 << i);
+        }
+
     } // end of method archerCombination
 
     static void findEnemy(int j, Queue<Pair> kill, int[][] mat) {
