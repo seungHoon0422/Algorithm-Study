@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 /*
   앞의 수들을 더한 상태로 계속 더해야하므로 오름차순이어야 그리디?하게 풀 수 있다.
 */
-public class Main_BOJ_11399_ATM_S3_배인수_132ms {
+public class Main_11399_ATM_S3_배인수_132ms {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
