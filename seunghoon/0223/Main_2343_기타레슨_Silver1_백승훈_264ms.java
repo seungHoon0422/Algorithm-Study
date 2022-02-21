@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class Main_2343_기타레슨_Silver1_백승훈 {
+public class Main_2343_기타레슨_Silver1_백승훈_264ms {
 
 	
 	
@@ -26,38 +26,53 @@ public class Main_2343_기타레슨_Silver1_백승훈 {
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		N = Integer.parseInt(st.nextToken());
-		M = Integer.parseInt(st.nextToken());
+		N = Integer.parseInt(st.nextToken());	// 1 ≤ N ≤ 100,000
+		M = Integer.parseInt(st.nextToken());	// 1 ≤ M ≤ N
 	
 		lectures = new int[N];
 		st = new StringTokenizer(br.readLine());
 		int sum = 0;
-		for(int i=N-1; i>=0; i--) {
+		int max = 0;
+		for(int i=0; i<N; i++) {
 			lectures[i] = Integer.parseInt(st.nextToken());
+			max = Math.max(max, lectures[i]);
 			sum += lectures[i];
 		}
 		
-		int avg = sum/M;
-		for(int i=0; i<N; ) {
-			int temp = 0;
-			while(i<N && temp < avg) {
-				temp += lectures[i++];
+		
+		int left = max;
+		int right = sum;
+		int result = (left+right)/2;
+		while(left<=right) {
+			int mid = (left+right)/2;
+			if(check(mid)) {
+				result = mid;
+				right = mid-1;
+			} else {
+				left = mid+1;
 			}
 			
-			System.out.println("i"+i);
-			System.out.println(temp);
-			if(temp > avg) avg = temp;
 		}
-		System.out.println(avg);
 		
-		
-		
-		
-		
+		System.out.println(result);
 		
 		
 		
 		
 		
 	} // end of main
+
+	public static boolean check(int avg) {
+		int count = 0;
+		int sum = 0;
+		for(int i=0; i<N; i++) {
+			if(sum +lectures[i] <= avg) sum += lectures[i];
+			else {
+				count++;
+				sum = lectures[i];
+			}
+		}
+		if(count>=M) return false;
+		else return true;
+	}
 } // end of class
