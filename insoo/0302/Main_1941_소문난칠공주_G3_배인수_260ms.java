@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 
-public class Main_1941_소문난칠공주_G3_260ms {
+public class Main_1941_소문난칠공주_G3_배인수_260ms {
 
     /*
         문제 보니까 25C7개 중 맞는 경우를 찾아야 하는 것 같다.
