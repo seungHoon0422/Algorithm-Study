@@ -21,6 +21,7 @@ import java.util.StringTokenizer;
 	매번 입력이 들어올 때 마다 search함수를 실행해 출발 노드에 연결되어있는 관계의 수를 파악 => 이과정에서 매번 똑같은 작업을 반복하다보니 시간초과 나는듯...
 	결국 union 써야함
 	
+	union find 알고리즘 적용
 	
 */
 public class Main_4195_친구네트워크_Gold2_백승훈_시간초과 {
