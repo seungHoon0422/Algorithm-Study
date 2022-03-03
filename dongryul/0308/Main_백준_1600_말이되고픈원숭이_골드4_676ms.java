@@ -56,11 +56,10 @@ class Main_백준_1600_말이되고픈원숭이_골드4_676ms{
                 for(int i=0; i<8; i++){
                     int nr = row + kr[i];
                     int nc = col + kc[i];
-                    int jumped1 = curr.jumped;
                     // 배열의 범위를 벗어났거나, 이미 방문된 좌표이거나, 장애물이 있는 좌표라면
-                    if(nr<0 || nr>=H || nc<0 || nc>=W || distance[nr][nc][jumped1+1]!=0 || map[nr][nc]==1) continue;
-                    distance[nr][nc][jumped1+1] = distance[row][col][jumped1]+1;
-                    q.offer(new Node(nr,nc,jumped1+1));
+                    if(nr<0 || nr>=H || nc<0 || nc>=W || distance[nr][nc][jumped+1]!=0 || map[nr][nc]==1) continue;
+                    distance[nr][nc][jumped+1] = distance[row][col][jumped]+1;
+                    q.offer(new Node(nr,nc,jumped+1));
                 } // end of for knight move
             } // end of if can jump
         } // end of while q.isEmpty
