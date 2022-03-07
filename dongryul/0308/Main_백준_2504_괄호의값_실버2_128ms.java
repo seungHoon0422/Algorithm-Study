@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Stack;
@@ -24,8 +23,8 @@ public class Main_백준_2504_괄호의값_실버2_128ms {
 		int total = 0;
 		int mult = 1;
 		// flag 변수 사용 닫는 괄호가 연속해서 나올 경우, 해당 변수를 통해 값을 더할지 말지 판단
-    // ex ( ( ( ) ) ) ( 
-    //          T     F 첫번째 닫는 괄호에서 값을 더하고, flag를 T로 둔다. 다시 여는 괄호가 나올 때 F로 변환한다.
+		// ex ( ( ( ) ) ) ( 
+	   	//          T     F 첫번째 닫는 괄호에서 값을 더하고, flag를 T로 둔다. 다시 여는 괄호가 나올 때 F로 변환한다.
 		boolean added = false;
 		Stack<Character> stack = new Stack<>();
 		String temp = br.readLine();
@@ -48,7 +47,7 @@ public class Main_백준_2504_괄호의값_실버2_128ms {
 				}
 				// 스택이 비지 않았고, 짝이 맞는 경우
 				else if(!stack.isEmpty() && stack.pop()=='('){
-          // 값을 더할지 확인
+					// 값을 합산할지 판단
 					if(!added) {
 						total+=mult;
 						added = true;
