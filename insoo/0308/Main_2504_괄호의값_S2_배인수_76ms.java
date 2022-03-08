@@ -4,7 +4,7 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 
-class Main {
+class Main_2504_괄호의값_S2_배인수_76ms {
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
