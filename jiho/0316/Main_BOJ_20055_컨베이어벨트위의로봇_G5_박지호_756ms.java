@@ -17,7 +17,7 @@ public class Main_BOJ_20055_컨베이어벨트위의로봇_G5_박지호_756ms {
 		boolean[] visited = new boolean[N];
 
 		int isZero = 0;
-		int level = 0;
+		int level = 0; 
 		st = new StringTokenizer(br.readLine());
 		for (int i = 0; i < 2; i++) {
 			if (i == 0) {
