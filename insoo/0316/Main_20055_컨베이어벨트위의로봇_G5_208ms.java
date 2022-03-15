@@ -7,7 +7,7 @@ import java.util.Iterator;
 import java.util.StringTokenizer;
 
 
-public class Main {
+public class Main_20055_컨베이어벨트위의로봇_G5_208ms {
     private static int N;
     private static int K;
     static int zeroCnt = 0;
