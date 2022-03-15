@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 
-public class Main {
+public class Main_15683_감시_G4_220ms {
 
 
     static int[] dx = {1, 0, -1, 0};
