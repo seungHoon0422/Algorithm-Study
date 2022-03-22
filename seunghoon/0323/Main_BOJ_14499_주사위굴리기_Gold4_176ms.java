@@ -1,28 +1,37 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
-public class Main_BOJ_14499_주사위굴리기_Gold4_244ms {
+public class Main_BOJ_14499_주사위굴리기_Gold4_176ms {
     static int[] dice = new int[7];
     static int[][] map;
     static int[] dx = { 0, 0, -1, 1 };
     static int[] dy = { 1, -1, 0, 0 };
-	 
-    public static void main(String[] args) {
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static StringTokenizer st;
+	static StringBuilder sb; 
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
-        int n = sc.nextInt();
-        int m = sc.nextInt();
-        int x = sc.nextInt();
-        int y = sc.nextInt();
-        int k = sc.nextInt();
+        st = new StringTokenizer(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
+        int m = Integer.parseInt(st.nextToken());
+        int x = Integer.parseInt(st.nextToken());
+        int y = Integer.parseInt(st.nextToken());
+        int k = Integer.parseInt(st.nextToken());
 	    
         map = new int[n][m];
         for (int i = 0; i < n; i++) {
+        	st = new StringTokenizer(br.readLine());
             for (int j = 0; j < m; j++) {
-                map[i][j] = sc.nextInt();
+                map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
 	 
+        st = new StringTokenizer(br.readLine());
         for (int i = 0; i < k; i++) {
-            int dir = sc.nextInt();
+            int dir = Integer.parseInt(st.nextToken());
             int nx = x + dx[dir - 1];
             int ny = y + dy[dir - 1];
 	 
