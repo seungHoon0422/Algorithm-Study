@@ -7,7 +7,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 
-public class Main_13335_트럭_S1_96ms.java {
+public class Main_13335_트럭_S1_96ms {
 
     /*
         트럭의 순서는 바꿀 수 없으며, 트럭의 무게는 같을 수 있는 트럭이 존재.
