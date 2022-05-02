@@ -71,9 +71,7 @@ public class Main_1103 {
 			if (dp[newR][newC] > dp[sr][sc]) continue;
 
 			visited[newR][newC] = true;
-
-			dp[newR][newC] += dp[sr][sc] + 1; // 현재 값을 다음 칸에 더해주고 진행
-
+			
 			go(newR, newC, cnt + 1);
 
 			visited[newR][newC] = false;
